@@ -15,9 +15,11 @@ export default function HomePage() {
             <a href="#contact">Contact</a>
           </nav>
 
-          <Link href="/login" className="loginButton">
-            Login
-          </Link>
+          <div className="controls">
+            <Link href="/login" className="loginButton">
+              Login
+            </Link>
+          </div>
         </div>
       </header>
 

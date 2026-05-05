@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { apiRequest } from "@/lib/api";
 import { getUser, logout, User } from "@/lib/auth";
+import Link from "next/link";
 
 type Task = {
   id: number;
@@ -48,6 +49,8 @@ export default function DashboardPage() {
   const [statusFilter, setStatusFilter] = useState("");
 
   const [error, setError] = useState("");
+  const [insightsLoading, setInsightsLoading] = useState(false);
+
   const [loading, setLoading] = useState(true);
 
   async function loadDashboard(currentUser: User) {
@@ -62,7 +65,7 @@ export default function DashboardPage() {
       }
 
       const tasksData = await apiRequest<Task[]>(
-        `/tasks${query.toString() ? `?${query.toString()}` : ""}`
+        `/tasks${query.toString() ? `?${query.toString()}` : ""}`,
       );
 
       setTasks(tasksData);
@@ -157,9 +160,15 @@ export default function DashboardPage() {
             </p>
           </div>
 
-          <button className="secondaryButton" onClick={handleLogout}>
-            Logout
-          </button>
+          <div className="controls">
+            <Link href="/" className="secondaryButton">
+              Landing
+            </Link>
+
+            <button className="secondaryButton" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
         </div>
 
         {error && <div className="errorBox">{error}</div>}
@@ -337,11 +346,15 @@ export default function DashboardPage() {
                       <p className="muted">No risky tasks detected.</p>
                     ) : (
                       insights.risky_tasks.map((item) => (
-                        <div key={`${item.employee}-${item.task}`} className="insightItem">
+                        <div
+                          key={`${item.employee}-${item.task}`}
+                          className="insightItem"
+                        >
                           <strong>{item.task}</strong>
                           <span>{item.employee}</span>
                           <small>
-                            {item.actual_time}h actual / {item.estimated_time}h estimated
+                            {item.actual_time}h actual / {item.estimated_time}h
+                            estimated
                           </small>
                         </div>
                       ))

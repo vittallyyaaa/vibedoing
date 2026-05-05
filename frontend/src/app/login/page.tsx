@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { apiRequest } from "@/lib/api";
@@ -13,7 +14,6 @@ type AuthResponse = {
 
 export default function LoginPage() {
   const router = useRouter();
-
   const [mode, setMode] = useState<"login" | "register">("login");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -52,10 +52,14 @@ export default function LoginPage() {
   return (
     <main className="authPage">
       <form className="authCard" onSubmit={handleSubmit}>
+        <div className="authTop">
+          <Link href="/" className="backButton">
+            ← Back to landing
+          </Link>
+
+        </div>
         <h1>{mode === "login" ? "Welcome back" : "Create account"}</h1>
-        <p>
-          Sign in to VibeDoing and continue tracking workload intelligence.
-        </p>
+        <p>Sign in to VibeDoing and continue tracking workload intelligence.</p>
 
         <div className="authSwitch">
           <button
@@ -68,7 +72,9 @@ export default function LoginPage() {
 
           <button
             type="button"
-            className={mode === "register" ? "primaryButton" : "secondaryButton"}
+            className={
+              mode === "register" ? "primaryButton" : "secondaryButton"
+            }
             onClick={() => setMode("register")}
           >
             Register
@@ -94,7 +100,9 @@ export default function LoginPage() {
           <select
             className="input"
             value={role}
-            onChange={(event) => setRole(event.target.value as "worker" | "ceo")}
+            onChange={(event) =>
+              setRole(event.target.value as "worker" | "ceo")
+            }
           >
             <option value="worker">Worker</option>
             <option value="ceo">CEO</option>
