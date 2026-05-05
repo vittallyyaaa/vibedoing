@@ -1,4 +1,4 @@
-export const API_URL = "https://vibedoing-backend.onrender.com/";
+export const API_URL = "https://vibedoing-backend.onrender.com";
 
 export async function apiRequest<T>(
   endpoint: string,
