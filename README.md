@@ -1,10 +1,3 @@
-Ти майже все зробив правильно — просто зламалась Markdown-структура (блоки коду не закриті, заголовки злиплись і тд).
-
-Ось **повністю виправлений, чистий README.md**, який можна просто вставити 👇
-
----
-
-```md
 # VibeDoing
 
 VibeDoing is a fullstack internal workflow intelligence application designed to help companies track how work is performed, understand workload distribution, and identify execution risks early.
