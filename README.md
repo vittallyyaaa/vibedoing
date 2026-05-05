@@ -271,21 +271,3 @@ Provide leadership with a clear and fast way to:
 * Improve team efficiency through data visibility
 
 ---
-
-## 📎 Author
-
-Fullstack test project implementation
-
-````
-
----
-
-## 🔥 Тепер
-
-```bash
-git add README.md
-git commit -m "Fix README formatting and structure"
-git push
-````
-
----
